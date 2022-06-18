@@ -1,5 +1,7 @@
 <template>
-  
+  <div class="show">
+    <a-button type="primary">EasyFormModal演示</a-button>
+  </div>
 </template>
 
 <script>
@@ -13,13 +15,9 @@ export default {
 }
 </script>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="less" scoped>
+.show > * {
+  margin-left: 30px;
+  margin-top: 15px;
 }
 </style>
