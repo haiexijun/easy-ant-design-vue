@@ -1,16 +1,28 @@
 <template>
   <div class="show">
-    <a-button type="primary">EasyFormModal演示</a-button>
+    <!--EasyFormModal演示-->
+    <a-button type="primary" @click="testEasyFormModal">EasyFormModal演示</a-button>
+    <EasyFormModal
+        ref="EasyFormModal"
+        :title="'EasyFormModal演示'"
+        :title-status="'新增'"
+        :width="800"
+    />
   </div>
 </template>
 
 <script>
 
-
+import EasyFormModal from "@/components/EasyFormModal/EasyFormModal";
 export default {
   name: 'App',
   components: {
-
+    EasyFormModal
+  },
+  methods:{
+    testEasyFormModal(){
+        this.$refs.EasyFormModal.visible=true;
+    }
   }
 }
 </script>
