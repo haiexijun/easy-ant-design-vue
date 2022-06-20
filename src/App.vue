@@ -7,6 +7,7 @@
         :title="'EasyFormModal演示'"
         :title-status="'新增'"
         :width="800"
+        :modal-type="'add'"
     />
   </div>
 </template>
