@@ -28,15 +28,21 @@ export default {
           name:'物料名称',
           type:'input',
           notNull:false,
-          help:'abc',
+          help:'就是物料类别',
           placeholder:'请输入物料类别',
+          isDisable:false
         },
         materialClass:{
           name:'物料类别',
           type:'input',
           notNull:false,
-          help:'test',
           placeholder:'请输入物料类别',
+          isDisable:true
+        },
+        materialNumber:{
+          name:'数量',
+          type:'number-input',
+          notNull:false,
         }
       }
     }

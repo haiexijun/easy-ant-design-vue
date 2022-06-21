@@ -29,9 +29,9 @@
               :span="12">
             <a-form-item>
               <!--表单左边的label-->
-              <span slot="label">
-                {{ item.name }}:
-                <a-tooltip>
+              <span style="display: inline-block;width: 25%;text-align: right" slot="label">
+                {{ item.name  }}:
+                <a-tooltip v-if="item.help">
                   <template #title>{{item.help}}</template>
                   <div style="margin-right: 4px;width: 12px;height: 12px;border-radius: 10px;background-color: #d9d7d7;display: inline-block">
                     <p style="font-size: 1px;text-align: center;line-height: 12px;">?</p>
@@ -39,10 +39,19 @@
                 </a-tooltip>
               </span>
               <!--右侧的表单组件-->
+              <!--1.普通的input表单组件-->
               <a-input
+                  :disabled="item.isDisable"
+                  v-if="item.type === 'input'"
                   :placeholder="item.placeholder"
                   style="width: 75%;"
               />
+              <!--2.数字输入组件-->
+              <a-input-number
+                  style="width: 75%;"
+                  v-if="item.type==='number-input'"
+              />
+
             </a-form-item>
           </a-col>
 
