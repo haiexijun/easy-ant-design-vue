@@ -21,24 +21,31 @@
     <!--内部表单生成器-->
     <div>
       <a-form :layout="formLayout" :model="formState">
-        <a-row :gutter="48">
+        <a-row>
           <!--通过v-for来循环渲染要生成的表单组件-->
-          <a-col :md="24" :sm="24">
-            <a-form-item
-
-            >
+          <a-col
+              v-for="(item,key) in modalFormSetting"
+              :key="key"
+              :span="12">
+            <a-form-item>
               <!--表单左边的label-->
               <span slot="label">
-                {{ '用户名' }}
+                {{ item.name }}:
                 <a-tooltip>
-                  <template #title>prompt text</template>
-                  <div style="width: 12px;height: 12px;border-radius: 10px;background-color: #d9d7d7;display: inline-block">
+                  <template #title>{{item.help}}</template>
+                  <div style="margin-right: 4px;width: 12px;height: 12px;border-radius: 10px;background-color: #d9d7d7;display: inline-block">
                     <p style="font-size: 1px;text-align: center;line-height: 12px;">?</p>
                   </div>
                 </a-tooltip>
               </span>
+              <!--右侧的表单组件-->
+              <a-input
+                  :placeholder="item.placeholder"
+                  style="width: 75%;"
+              />
             </a-form-item>
           </a-col>
+
         </a-row>
       </a-form>
     </div>
@@ -97,6 +104,10 @@ export default {
       type:String,
       default:'horizontal'
     },
+    //这是表单生成器的初始化设置，用于渲染表单
+    modalFormSetting:{
+      type:Object
+    }
   },
   data(){
     return{
@@ -111,6 +122,7 @@ export default {
   methods:{
     ok(type){
       this.visible=false
+      console.log(this.modalFormSetting)
     }
   }
 }

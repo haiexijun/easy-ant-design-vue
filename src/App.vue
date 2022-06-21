@@ -8,6 +8,7 @@
         :title-status="'新增'"
         :width="800"
         :modal-type="'add'"
+        :modal-form-setting="setting1"
     />
   </div>
 </template>
@@ -19,6 +20,27 @@ export default {
   name: 'App',
   components: {
     EasyFormModal
+  },
+  data(){
+    return{
+      //测试easyFormModal的setting
+      setting1:{
+        materialName:{
+          name:'物料名称',
+          type:'input',
+          notNull:false,
+          help:'abc',
+          placeholder:'请输入物料类别',
+        },
+        materialClass:{
+          name:'物料类别',
+          type:'input',
+          notNull:false,
+          help:'test',
+          placeholder:'请输入物料类别',
+        }
+      }
+    }
   },
   methods:{
     testEasyFormModal(){
