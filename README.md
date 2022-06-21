@@ -32,6 +32,7 @@ npm run build
 
 ant-design-vue官方文档：[https://www.antdv.com/docs/vue/introduce-cn/](https://www.antdv.com/docs/vue/introduce-cn/)
 
+我编写的easy-ant-design-vue的中文wiki：[https://github.com/haiexijun/easy-ant-design-vue/wiki](https://github.com/haiexijun/easy-ant-design-vue/wiki)
 
 ### 四.组件说明
 
