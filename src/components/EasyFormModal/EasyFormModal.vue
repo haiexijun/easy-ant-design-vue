@@ -68,7 +68,7 @@ export default {
     // 模态框的宽度
     width:{
       type:Number,
-      default:800
+      default:888
     },
     // 是否垂直居中展示模态框,默认false
     centered:{

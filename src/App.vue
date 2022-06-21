@@ -6,7 +6,6 @@
         ref="EasyFormModal"
         :title="'EasyFormModal演示'"
         :title-status="'新增'"
-        :width="800"
         :modal-type="'add'"
         :modal-form-setting="setting1"
     />
