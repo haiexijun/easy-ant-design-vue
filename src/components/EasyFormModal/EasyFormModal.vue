@@ -25,18 +25,16 @@
           <!--通过v-for来循环渲染要生成的表单组件-->
           <a-col :md="24" :sm="24">
             <a-form-item
-                :label-col="4"
-                :wrapper-col="20"
+
             >
               <!--表单左边的label-->
               <span slot="label">
                 {{ '用户名' }}
-                <a-tooltip :title="'dsd'">
-                  <icon
-                      type="question-circle"
-                      theme="filled"
-                      style="color: rgba(0, 0, 0, 0.25)"
-                  />
+                <a-tooltip>
+                  <template #title>prompt text</template>
+                  <div style="width: 12px;height: 12px;border-radius: 10px;background-color: #d9d7d7;display: inline-block">
+                    <p style="font-size: 1px;text-align: center;line-height: 12px;">?</p>
+                  </div>
                 </a-tooltip>
               </span>
             </a-form-item>
