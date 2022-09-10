@@ -29,26 +29,31 @@
               :span="12">
             <a-form-item>
               <!--表单左边的label-->
-              <span style="display: inline-block;width: 25%;text-align: right" slot="label">
-                {{ item.name  }}:
+              <span style="display: inline-block;width: 25%;text-align: right;" slot="label">
+                <!--是否必需填写，不能为空。左边一般为红色"*"星号-->
+                <span v-if="item.isRequired" style="color: #ff0303;">*</span>
+                {{ item.name }}
                 <a-tooltip v-if="item.help">
                   <template #title>{{item.help}}</template>
                   <div style="margin-right: 4px;width: 12px;height: 12px;border-radius: 10px;background-color: #d9d7d7;display: inline-block">
                     <p style="font-size: 1px;text-align: center;line-height: 12px;">?</p>
                   </div>
+                  <div style="float: right;font-weight: bolder">:</div>
                 </a-tooltip>
               </span>
+              <!--冒号：-->
+              <span style="font-weight: bolder" v-if="!item.help">:</span>
               <!--右侧的表单组件-->
               <!--1.普通的input表单组件-->
               <a-input
                   :disabled="item.isDisable"
                   v-if="item.type === 'input'"
                   :placeholder="item.placeholder"
-                  style="width: 75%;"
+                  style="width: 70%;margin-left: 5px"
               />
               <!--2.数字输入组件-->
               <a-input-number
-                  style="width: 75%;"
+                  style="width: 70%;margin-left: 5px"
                   v-if="item.type==='number-input'"
               />
 
@@ -89,12 +94,12 @@ export default {
       type:Object,
       default:{minHeight:'auto'}
     },
-    // 是否支持键盘 esc 关闭
+    // 是否支持键盘 esc 关闭，默认是
     keyboard:{
       type:Boolean,
       default:true
     },
-    // 是否展示遮罩
+    // 是否展示遮罩，默认是
     mask:{
       type:Boolean,
       default:true

@@ -5,7 +5,7 @@
     <EasyFormModal
         ref="EasyFormModal"
         :title="'EasyFormModal演示'"
-        :title-status="'新增'"
+        :title-status="'编辑'"
         :modal-type="'add'"
         :modal-form-setting="setting1"
     />
@@ -30,7 +30,10 @@ export default {
           notNull:false,
           help:'就是物料类别',
           placeholder:'请输入物料类别',
-          isDisable:false
+          //是否禁用
+          isDisable:false,
+          //是否必填，不为空
+          isRequired:true
         },
         materialClass:{
           name:'物料类别',
