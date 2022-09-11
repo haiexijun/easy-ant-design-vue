@@ -56,6 +56,27 @@
                   style="width: 70%;margin-left: 5px"
                   v-if="item.type==='number-input'"
               />
+              <!--3.普通选择器-->
+              <a-select
+                  :allowClear="item.isAllowClear"
+                  :defaultActiveFirstOption="item.isDefaultActiveFirstOption"
+                  :disabled="item.isDisable"
+                  :mode="item.mode"
+                  :notFoundContent="item.notFoundContent"
+                  :showArrow="item.isShowArrow"
+                  :showSearch="item.isShowSearch"
+                  :filterOption="item.isFilterOption"
+                  :placeholder="'请选择' + item.name"
+                  v-if="item.type === 'select'"
+                  style="width: 70%;margin-left: 5px"
+              >
+                <a-select-option
+                    v-for="(item1,key1) in item.options"
+                    :key="key1"
+                >
+                  {{item1}}
+                </a-select-option>
+              </a-select>
 
             </a-form-item>
           </a-col>
@@ -134,9 +155,13 @@ export default {
     }
   },
   methods:{
+    //点击确定或保存时触发
     ok(type){
       this.visible=false
-      console.log(this.modalFormSetting)
+      console.log(this.formState)
+    },
+    handleSearch(value){
+
     }
   }
 }
