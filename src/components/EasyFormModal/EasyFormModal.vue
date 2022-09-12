@@ -20,7 +20,9 @@
 
     <!--内部表单生成器-->
     <div>
-      <a-form :layout="formLayout" :model="formState">
+      <a-form
+          :layout="formLayout"
+          :model="formState">
         <a-row>
           <!--通过v-for来循环渲染要生成的表单组件-->
           <a-col
@@ -46,18 +48,22 @@
               <!--右侧的表单组件-->
               <!--1.普通的input表单组件-->
               <a-input
+                  v-model:value="formState[key]"
                   :disabled="item.isDisable"
                   v-if="item.type === 'input'"
-                  :placeholder="item.placeholder"
+                  :placeholder="'请输入' + item.name"
                   style="width: 70%;margin-left: 5px"
               />
               <!--2.数字输入组件-->
               <a-input-number
+                  v-model:value="formState[key]"
+                  :placeholder="'请输入' + item.name"
                   style="width: 70%;margin-left: 5px"
                   v-if="item.type==='number-input'"
               />
               <!--3.普通选择器-->
               <a-select
+                  v-model:value="formState[key]"
                   :allowClear="item.isAllowClear"
                   :defaultActiveFirstOption="item.isDefaultActiveFirstOption"
                   :disabled="item.isDisable"
@@ -151,7 +157,7 @@ export default {
       //点击确定按钮时是否会loading转圈
       loading:false,
       //表单数据对象
-      formState:{},
+      formState:{}
     }
   },
   methods:{
@@ -160,8 +166,14 @@ export default {
       this.visible=false
       console.log(this.formState)
     },
-    handleSearch(value){
 
+  },
+  mounted() {
+    //为表单各选项绑定数据
+    for (let key in this.modalFormSetting){
+      if (this.modalType==='add'){
+        this.formState[key]=""
+      }
     }
   }
 }
