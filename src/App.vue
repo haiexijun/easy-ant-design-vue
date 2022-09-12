@@ -75,6 +75,9 @@ export default {
   methods:{
     testEasyFormModal(){
         this.$refs.EasyFormModal.visible=true;
+    },
+    testEasyFormModalCopy(){
+      this.$refs.EasyFormModalCopy.visible=true;
     }
   }
 }

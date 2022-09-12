@@ -29,7 +29,7 @@
               v-for="(item,key) in modalFormSetting"
               :key="key"
               :span="12">
-            <a-form-item>
+            <a-form-item :name="key">
               <!--表单左边的label-->
               <span style="display: inline-block;width: 25%;text-align: right;" slot="label">
                 <!--是否必需填写，不能为空。左边一般为红色"*"星号-->
@@ -95,8 +95,38 @@
 </template>
 
 <script>
+import {ref, reactive, onMounted} from 'vue'
 export default {
   name: "EasyFormModal",
+  setup(){
+
+    //visible用于模态框是否展示，默认false
+    let visible=ref(false)
+
+    //点击确定按钮时是否会loading转圈
+    let loading=ref(false)
+
+    //表单数据对象
+    let formState=reactive({})
+
+    //点击确定或保存时触发
+    let ok= type => {
+      visible.value=false
+      console.log(type)
+    }
+
+    //onMounted生命周期
+    onMounted(function () {
+      //为表单各选项绑定数据
+
+    })
+    return{
+      visible,
+      loading,
+      formState,
+      ok
+    }
+  },
   props:{
     // 模态框的标题，比如物料、物料类型
     title:{
@@ -149,36 +179,10 @@ export default {
     modalFormSetting:{
       type:Object
     }
-  },
-  data(){
-    return{
-      //visible用于模态框是否展示，默认false
-      visible: false,
-      //点击确定按钮时是否会loading转圈
-      loading:false,
-      //表单数据对象
-      formState:{}
-    }
-  },
-  methods:{
-    //点击确定或保存时触发
-    ok(type){
-      this.visible=false
-      console.log(this.formState)
-    },
-
-  },
-  mounted() {
-    //为表单各选项绑定数据
-    for (let key in this.modalFormSetting){
-      if (this.modalType==='add'){
-        this.formState[key]=""
-      }
-    }
   }
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 
 </style>
